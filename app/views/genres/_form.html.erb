@@ -1,0 +1,10 @@
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end%>
+
+<%= form_with model:genre do |f|  %>
+    <%= f.label 'Nome' %>
+    <%= f.text_field :name %>
+
+    <%= f.submit 'Salvar Gênero' %>
+<% end %>
