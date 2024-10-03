@@ -1,0 +1,7 @@
+<h1><%= @movie_director.name %></h1>
+
+<ul>
+    <li>Nacionalidade: <span><%= @movie_director.nationality %></span></li>
+    <li>Data de Nascimento: <span><%= @movie_director.birth_date.strftime("%d/%m/%Y") %></span></li>
+    <li>Gênero preferido: <span><%= @movie_director.genre.name %></span></li>
+</ul>

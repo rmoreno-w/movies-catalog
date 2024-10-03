@@ -1,0 +1,20 @@
+<%= form_with model: movie_director do |f|  %>
+    <%= f.label 'Nome' %>
+    <%= f.text_field :name %>
+
+    <%= f.label 'Nacionalidade' %>
+    <%= f.text_field :nationality %>
+
+    <%= f.label 'Data de Nascimento' %>
+    <% if @type == "new" %>
+        <%= f.text_field :birth_date, type: "date" %>
+    <% end %>
+    <% if @type == "edit" %>
+        <%= f.text_field :birth_date, type: "date", value: @movie_director.birth_date.strftime("%Y-%m-%d") %>
+    <% end %>
+
+    <%= f.label 'Gênero preferido' %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+
+    <%= f.submit 'Salvar Diretor de Filme' %>
+<% end %>
