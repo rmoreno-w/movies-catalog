@@ -43,7 +43,6 @@ class MovieDirectorsController < ApplicationController
     name, nationality, birth_date, received_genre = params[:movie_director].values_at(:name, :nationality, :birth_date, :genre_id)
     genre = Genre.find(received_genre)
 
-
     if @movie_director.update(name: name, nationality: nationality, birth_date: birth_date, genre: genre)
       redirect_to movie_director_path(@movie_director.id)
     else
