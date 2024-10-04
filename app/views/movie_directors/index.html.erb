@@ -2,6 +2,6 @@
 
 <ul>
     <% @movie_directors.each do |md| %>
-        <li><%= md.name %></li>
+        <li><%= link_to md.name, movie_director_path(md.id) %></li>
     <% end %>
 </ul>
