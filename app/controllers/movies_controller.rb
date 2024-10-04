@@ -2,7 +2,8 @@ require "date"
 
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.published
+    @released_movies = Movie.published.released
+    @to_be_released_movies = Movie.published.to_be_released
   end
 
   def new
@@ -10,11 +11,12 @@ class MoviesController < ApplicationController
   end
 
   def create
-    title, year, synopsis, origin_country, movie_length, received_movie_director, received_genre, draft_status = 
-    params[:movie].values_at(:title, :year, :synopsis, :origin_country, :movie_length, :movie_director_id, :genre_id, :draft_status)
+    title, year, synopsis, origin_country, movie_length, received_movie_director, received_genre, draft_status, releasing_status =
+    params[:movie].values_at(:title, :year, :synopsis, :origin_country, :movie_length, :movie_director_id, :genre_id, :draft_status, :releasing_status)
 
     genre = Genre.find(received_genre)
     movie_director = MovieDirector.find(received_movie_director)
+    draft_status = draft_status ==  "0" ? :published : :draft
 
     new_movie = Movie.new(
       title: title,
@@ -24,7 +26,8 @@ class MoviesController < ApplicationController
       genre: genre,
       movie_length: movie_length,
       movie_director: movie_director,
-      draft_status: draft_status
+      draft_status: draft_status,
+      releasing_status: releasing_status
     )
 
     if new_movie.save
@@ -47,8 +50,8 @@ class MoviesController < ApplicationController
 
   def update
     recieved_movie_id = params[:id]
-    title, year, synopsis, origin_country, movie_length, received_movie_director, received_genre, draft_status = 
-    params[:movie].values_at(:title, :year, :synopsis, :origin_country, :movie_length, :movie_director_id, :genre_id, :draft_status)
+    title, year, synopsis, origin_country, movie_length, received_movie_director, received_genre, draft_status, releasing_status =
+    params[:movie].values_at(:title, :year, :synopsis, :origin_country, :movie_length, :movie_director_id, :genre_id, :draft_status, :releasing_status)
 
     genre = Genre.find(received_genre)
     movie_director = MovieDirector.find(received_movie_director)
@@ -62,7 +65,8 @@ class MoviesController < ApplicationController
       genre: genre,
       movie_length: movie_length,
       movie_director: movie_director,
-      draft_status: draft_status
+      draft_status: draft_status,
+      releasing_status: releasing_status
     )
       redirect_to movie_path(@movie.id)
     else

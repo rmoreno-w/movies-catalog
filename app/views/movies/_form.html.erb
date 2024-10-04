@@ -29,5 +29,8 @@
         <%= f.check_box :draft_status, {}, "draft", "published" %>
     <% end %>
 
+    <%= f.label :role, "Status de lançamento do filme" %>
+    <%= f.select :releasing_status, [['Lançado', 'released'], ['A ser lançado', 'to_be_released']] %>
+
     <%= f.submit 'Salvar Filme' %>
 <% end %>
