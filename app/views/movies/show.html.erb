@@ -1,6 +1,7 @@
 <h1><%= @movie.title %></h1>
 
 <ul>
+    <li>Status de Publicação: <span><%= @movie.draft_status == "draft" ? "Rascunho" : "Publicado" %></span></li>
     <li>Ano de Lançamento: <span><%= @movie.year %></span></li>
     <li>Sinopse: <span><%= @movie.synopsis %></span></li>
     <li>País de Origem: <span><%= @movie.origin_country %></span></li>

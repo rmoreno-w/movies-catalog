@@ -20,5 +20,14 @@
     <%= f.label 'Diretor do Filme' %>
     <%= f.collection_select :movie_director_id, MovieDirector.all, :id, :name %>
 
+    <% if @type == "new" %>
+        <%= f.label 'Tornar rascunho' %>
+        <%= f.check_box :draft_status %>
+    <% end %>
+    <% if @type == "edit" %>
+        <%= f.label 'Tornar rascunho' %>
+        <%= f.check_box :draft_status, {}, "draft", "published" %>
+    <% end %>
+
     <%= f.submit 'Salvar Filme' %>
 <% end %>
