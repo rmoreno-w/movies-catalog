@@ -5,3 +5,12 @@
     <li>Data de Nascimento: <span><%= @movie_director.birth_date.strftime("%d/%m/%Y") %></span></li>
     <li>Gênero preferido: <span><%= @movie_director.genre.name %></span></li>
 </ul>
+
+<h2>Filmes dirigidos por <%= @movie_director.name %>:</h2>
+<ul>
+    <% @movie_director.movies.each do |movie| %>
+        <li>
+            <%= link_to movie.title, movie_path(movie.id) %>
+        </li>
+    <% end %>
+</ul>
