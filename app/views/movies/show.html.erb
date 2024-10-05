@@ -5,6 +5,9 @@
         Status de Publicação: <span class="font-normal"><%= @movie.draft_status == "draft" ? "Rascunho" : "Publicado" %></span>
     </li>
     <li class="font-bold">
+        Status de Lançamento: <span class="font-normal"><%= @movie.releasing_status == "released" ? "Já lançado" : "A ser lançado" %></span>
+    </li>
+    <li class="font-bold">
         Ano de Lançamento: <span class="font-normal"><%= @movie.year %></span>
     </li>
     <li class="font-bold">
