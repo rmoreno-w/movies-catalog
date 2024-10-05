@@ -1,10 +1,15 @@
-<% if flash[:notice] %>
-    <%= flash[:notice] %>
-<% end%>
+<h2>
+    <% if controller.action_name == "new" %>
+        Criar novo Gênero
+    <% end %>
+    <% if controller.action_name == "edit" %>
+        Atualizar Gênero - <%= genre.name %>
+    <% end %>    
+</h2>
 
-<%= form_with model:genre do |f|  %>
-    <%= f.label 'Nome' %>
-    <%= f.text_field :name %>
+<%= form_with model:genre, class: "flex flex-col" do |f|  %>
+    <%= f.label 'Nome', class: "font-semibold" %>
+    <%= f.text_field :name, class: "rounded-lg" %>
 
-    <%= f.submit 'Salvar Gênero' %>
+    <%= f.submit 'Salvar Gênero', class: "bg-slate-700 mt-4 h-12 rounded-lg hover:bg-slate-500 hover:cursor-pointer text-white transition" %>
 <% end %>

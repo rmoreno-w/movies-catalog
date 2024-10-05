@@ -6,7 +6,6 @@ class MovieDirectorsController < ApplicationController
   end
 
   def new
-    @type = "new"
   end
 
   def create
@@ -30,8 +29,6 @@ class MovieDirectorsController < ApplicationController
   end
 
   def edit
-    @type = "edit"
-
     received_id = params[:id]
     @movie_director = MovieDirector.find(received_id)
   end

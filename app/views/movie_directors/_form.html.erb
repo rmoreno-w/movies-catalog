@@ -1,20 +1,29 @@
-<%= form_with model: movie_director do |f|  %>
-    <%= f.label 'Nome' %>
-    <%= f.text_field :name %>
-
-    <%= f.label 'Nacionalidade' %>
-    <%= f.text_field :nationality %>
-
-    <%= f.label 'Data de Nascimento' %>
-    <% if @type == "new" %>
-        <%= f.text_field :birth_date, type: "date" %>
+<h2>
+    <% if controller.action_name == "new" %>
+        Criar novo Diretor
     <% end %>
-    <% if @type == "edit" %>
-        <%= f.text_field :birth_date, type: "date", value: @movie_director.birth_date.strftime("%Y-%m-%d") %>
+    <% if controller.action_name == "edit" %>
+        Atualizar Diretor - <%= @movie_director.name %>
+    <% end %>    
+</h2>
+
+<%= form_with model: movie_director, class: "flex flex-col gap-2" do |f|  %>
+    <%= f.label 'Nome', class: "font-semibold" %>
+    <%= f.text_field :name, class: "rounded-lg" %>
+
+    <%= f.label 'Nacionalidade', class: "font-semibold" %>
+    <%= f.text_field :nationality, class: "rounded-lg" %>
+
+    <%= f.label 'Data de Nascimento', class: "font-semibold" %>
+    <% if controller.action_name == "new" %>
+        <%= f.text_field :birth_date, type: "date", class: "rounded-lg" %>
+    <% end %>
+    <% if controller.action_name == "edit" %>
+        <%= f.text_field :birth_date, type: "date", value: @movie_director.birth_date.strftime("%Y-%m-%d"), class: "rounded-lg" %>
     <% end %>
 
-    <%= f.label 'Gênero preferido' %>
-    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+    <%= f.label 'Gênero preferido', class: "font-semibold" %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name, class: "rounded-lg" %>
 
-    <%= f.submit 'Salvar Diretor de Filme' %>
+    <%= f.submit 'Salvar Diretor de Filme', class: "bg-slate-700 mt-4 h-12 rounded-lg hover:bg-slate-500 hover:cursor-pointer text-white transition" %>
 <% end %>

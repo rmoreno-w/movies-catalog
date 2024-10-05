@@ -1,36 +1,47 @@
-<%= form_with model: movie do |f|  %>
-    <%= f.label 'Titulo' %>
-    <%= f.text_field :title %>
+<h2>
+    <% if controller.action_name == "new" %>
+        Criar novo Filme
+    <% end %>
+    <% if controller.action_name == "edit" %>
+        Atualizar Filme - <%= movie.title %>
+    <% end %>    
+</h2>
 
-    <%= f.label 'Ano de Lançamento' %>
-    <%= f.text_field :year, type: "number" %>
+<%= form_with model: movie, class: "flex flex-col gap-2" do |f|  %>
+    <%= f.label 'Titulo', class: "font-semibold" %>
+    <%= f.text_field :title, class: "rounded-lg"  %>
 
-    <%= f.label 'Sinopse' %>
-    <%= f.text_area :synopsis %>
+    <%= f.label 'Ano de Lançamento', class: "font-semibold" %>
+    <%= f.text_field :year, type: "number", class: "rounded-lg"  %>
 
-    <%= f.label 'País de Origem' %>
-    <%= f.text_field :origin_country %>
+    <%= f.label 'Sinopse', class: "font-semibold" %>
+    <%= f.text_area :synopsis, class: "rounded-lg"  %>
 
-    <%= f.label 'Duração (em minutos)' %>
-    <%= f.text_field :movie_length, type: "number" %>
+    <%= f.label 'País de Origem', class: "font-semibold" %>
+    <%= f.text_field :origin_country, class: "rounded-lg"  %>
 
-    <%= f.label 'Gênero' %>
+    <%= f.label 'Duração (em minutos)', class: "font-semibold" %>
+    <%= f.text_field :movie_length, type: "number", class: "rounded-lg"  %>
+
+    <%= f.label 'Gênero', class: "font-semibold" %>
     <%= f.collection_select :genre_id, Genre.all, :id, :name %>
 
-    <%= f.label 'Diretor do Filme' %>
+    <%= f.label 'Diretor do Filme', class: "font-semibold" %>
     <%= f.collection_select :movie_director_id, MovieDirector.all, :id, :name %>
 
-    <% if @type == "new" %>
-        <%= f.label 'Tornar rascunho' %>
-        <%= f.check_box :draft_status %>
-    <% end %>
-    <% if @type == "edit" %>
-        <%= f.label 'Tornar rascunho' %>
-        <%= f.check_box :draft_status, {}, "draft", "published" %>
-    <% end %>
-
-    <%= f.label :role, "Status de lançamento do filme" %>
+    <%= f.label :role, "Status de lançamento do filme", class: "font-semibold" %>
     <%= f.select :releasing_status, [['Lançado', 'released'], ['A ser lançado', 'to_be_released']] %>
 
-    <%= f.submit 'Salvar Filme' %>
+    <div>
+        <% if controller.action_name == "new" %>
+            <%= f.label 'Tornar rascunho ', class: "font-semibold mr-2" %>
+            <%= f.check_box :draft_status %>
+        <% end %>
+        <% if controller.action_name == "edit" %>
+            <%= f.label 'Tornar rascunho ', class: "font-semibold mr-2" %>
+            <%= f.check_box :draft_status, {}, "draft", "published" %>
+        <% end %>
+    </div>
+
+    <%= f.submit 'Salvar Filme', class: "bg-slate-700 mt-4 h-12 rounded-lg hover:bg-slate-500 hover:cursor-pointer text-white transition" %>
 <% end %>

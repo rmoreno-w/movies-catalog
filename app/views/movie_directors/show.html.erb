@@ -1,12 +1,17 @@
 <h2><%= @movie_director.name %></h2>
-
 <ul>
-    <li>Nacionalidade: <span><%= @movie_director.nationality %></span></li>
-    <li>Data de Nascimento: <span><%= @movie_director.birth_date.strftime("%d/%m/%Y") %></span></li>
-    <li>Gênero preferido: <span><%= @movie_director.genre.name %></span></li>
+    <li class="font-bold">
+        Nacionalidade: <span class="font-normal"><%= @movie_director.nationality %></span>
+    </li>
+    <li class="font-bold">
+        Data de Nascimento: <span class="font-normal"><%= @movie_director.birth_date.strftime("%d/%m/%Y") %></span>
+    </li>
+    <li class="font-bold">
+        Gênero preferido: <span class="font-normal"><%= @movie_director.genre.name %></span>
+    </li>
 </ul>
 
-<h2>Filmes dirigidos por <%= @movie_director.name %>:</h2>
+<h3>Filmes dirigidos por <%= @movie_director.name %>:</h3>
 <ul>
     <% @movie_director.movies.each do |movie| %>
         <li>

@@ -1,11 +1,25 @@
 <h2><%= @movie.title %></h2>
 
 <ul>
-    <li>Status de Publicação: <span><%= @movie.draft_status == "draft" ? "Rascunho" : "Publicado" %></span></li>
-    <li>Ano de Lançamento: <span><%= @movie.year %></span></li>
-    <li>Sinopse: <span><%= @movie.synopsis %></span></li>
-    <li>País de Origem: <span><%= @movie.origin_country %></span></li>
-    <li>Duração (em minutos): <span><%= @movie.movie_length %></span></li>
-    <li>Diretor: <span><%= @movie.movie_director.name %></span></li>
-    <li>Gênero: <span><%= @movie.genre.name %></span></li>
+    <li class="font-bold">
+        Status de Publicação: <span class="font-normal"><%= @movie.draft_status == "draft" ? "Rascunho" : "Publicado" %></span>
+    </li>
+    <li class="font-bold">
+        Ano de Lançamento: <span class="font-normal"><%= @movie.year %></span>
+    </li>
+    <li class="font-bold">
+        Sinopse: <span class="font-normal"><%= @movie.synopsis %></span>
+    </li>
+    <li class="font-bold">
+        País de Origem: <span class="font-normal"><%= @movie.origin_country %></span>
+    </li>
+    <li class="font-bold">
+        Duração (em minutos): <span class="font-normal"><%= @movie.movie_length %></span>
+    </li>
+    <li class="font-bold">
+        Diretor: <span class="font-normal"><%= link_to @movie.movie_director.name, movie_director_path(@movie.movie_director.id) %></span>
+    </li>
+    <li class="font-bold">
+        Gênero: <span class="font-normal"><%= link_to @movie.genre.name, genre_path(@movie.genre.id) %></span>
+    </li>
 </ul>
