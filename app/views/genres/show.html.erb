@@ -1,4 +1,7 @@
-<h2><%= @genre.name %></h2>
+<div class="flex justify-between items-center">
+    <h2><%= @genre.name %></h2>
+    <%= link_to "Editar Gênero", edit_genre_path(@genre.id), class: "mt-4 no-underline flex justify-center items-center bg-slate-700 h-12 px-4 rounded-lg hover:bg-slate-500 hover:cursor-pointer text-white transition decoration-0" %>
+</div>
 
 <h3>Filmes cadastrados deste gênero:</h3>
 <ul>

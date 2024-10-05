@@ -1,4 +1,8 @@
-<h2><%= @movie_director.name %></h2>
+<div class="flex justify-between items-center">
+    <h2><%= @movie_director.name %></h2>
+    <%= link_to "Editar Diretor", edit_movie_director_path(@movie_director.id), class: "mt-4 no-underline flex justify-center items-center bg-slate-700 h-12 px-4 rounded-lg hover:bg-slate-500 hover:cursor-pointer text-white transition decoration-0" %>
+</div>
+
 <ul>
     <li class="font-bold">
         Nacionalidade: <span class="font-normal"><%= @movie_director.nationality %></span>

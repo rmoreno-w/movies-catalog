@@ -1,4 +1,7 @@
-<h2>Filmes cadastrados</h2>
+<div class="flex justify-between items-center">
+    <h2 class="text-center">Filmes cadastrados</h2>
+    <%= link_to "Cadastrar novo Filme", new_movie_path, class: "mt-4 no-underline flex justify-center items-center bg-slate-700 h-12 px-4 rounded-lg hover:bg-slate-500 hover:cursor-pointer text-white transition decoration-0" %>
+</div>
 
 <% if @released_movies.length >= 1 %>
     <h3>
