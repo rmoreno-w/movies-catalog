@@ -19,10 +19,11 @@
   </head>
 
   <body class='prose mx-auto my-12'>
-    <h1>Filmopédia</h1>
-    <nav>
-        <ul>
-            <li><%= link_to 'Home Page', root_path %></li>
+    <nav class="flex justify-between items-start">
+        <h1>Filmopédia</h1>
+        
+        <ul class="my-0">
+            <li class="my-0 list-none"><%= link_to 'Home Page', root_path %></li>
         </ul>
     </nav>
     <%= yield %>
