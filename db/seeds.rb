@@ -8,15 +8,15 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 Genre.create([
-  {name: "Comédia"},
-  {name: "Ação"},
-  {name: "Policial"}])
+  { name: "Comédia" },
+  { name: "Ação" },
+  { name: "Policial" } ])
 
-  
+
 MovieDirector.create!([
-  {name: "Astrogildo Ramos Fonseca", nationality: "Brasileiro", birth_date: "1990-05-02", genre_id: Genre.first.id},
-  {name: "Broncos Silva Oliveira", nationality: "Brasileiro", birth_date: "1960-07-05", genre_id: Genre.last.id}])
-    
+  { name: "Astrogildo Ramos Fonseca", nationality: "Brasileiro", birth_date: "1990-05-02", genre_id: Genre.first.id },
+  { name: "Broncos Silva Oliveira", nationality: "Brasileiro", birth_date: "1960-07-05", genre_id: Genre.last.id } ])
+
 # puts "Created Directors"
 Movie.create!([
   {
@@ -45,4 +45,4 @@ Movie.create!([
     movie_length: 200,
     movie_director_id: MovieDirector.last.id,
     genre_id: Genre.first.id,
-    draft_status: 1}])
+    draft_status: 1 } ])
