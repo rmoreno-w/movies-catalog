@@ -1,9 +1,9 @@
-<h1>Filmes cadastrados</h1>
+<h2>Filmes cadastrados</h2>
 
 <% if @released_movies.length >= 1 %>
-    <h2>
+    <h3>
         Filmes já lançados
-    </h2>
+    </h3>
     <ul>
         <% @released_movies.each do |m| %>
             <li><%= link_to  m.title, movie_path(m.id) %> - <%= m.year %></li>
@@ -12,9 +12,9 @@
 <% end %>
 
 <% if @to_be_released_movies.length >= 1 %>
-    <h2>
+    <h3>
         Filmes a serem lançados
-    </h2>
+    </h3>
     <ul>
         <% @to_be_released_movies.each do |m| %>
             <li><%= link_to  m.title, movie_path(m.id) %> - <%= m.year %></li>
